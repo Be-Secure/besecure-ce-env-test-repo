@@ -28,13 +28,13 @@ create_skeletons () {
         folder2=`awk -F/ '{print $(NF-2)}' <<< $file`
         #echo "second_folder= $folder1"
         #echo "third_folder= $folder2"
-        if [ ! -d $testDir/$folder2/$folder1 ];then
-          mkdir -p $testDir/$folder2/$folder1
+        if [ ! -d $testDir/tests/$folder2/$folder1 ];then
+          mkdir -p $testDir/tests/$folder2/$folder1
         fi
         test_file_name="${fn%.sh}-test.sh"  # Remove ".txt" and add "_test.sh"
-	if [ ! -f $testDir/$fodler2/$folder1/$test_file_name ];then
-           cp $skeleton_filepath $testDir/$folder2/$folder1/$test_file_name
-	   chmod +x $testDir/$folder2/$folder1/$test_file_name
+	if [ ! -f $testDir/tests/$fodler2/$folder1/$test_file_name ];then
+           cp $skeleton_filepath $testDir/tests/$folder2/$folder1/$test_file_name
+	   chmod +x $testDir/tests/$folder2/$folder1/$test_file_name
 	fi
       fi
     fi
@@ -45,7 +45,7 @@ create_skeletons () {
 update_env_list (){
   currDir=`pwd`
   testDir=${test_repo_path}
-  list_filename="${testDir}/env_list.txt"
+  list_filename="${testDir}/conf/env_list.txt"
 
   [[ ! -f $list_filename ]] && touch $list_filename
 
