@@ -1,0 +1,3 @@
+[submodule "envs"]
+	path = envs
+	url = https://github.com/Be-Secure/besecure-ce-env-repo
