@@ -3,7 +3,6 @@ operations=(install uninstall validate update reset)
 
 function test_install {
    echo "Testing installation for env $1"
-
    bes install -env $1 -V $2
 
    if [ xx"$?" == xx"0" ];then
@@ -15,7 +14,6 @@ function test_install {
 
 function test_uninstall {
    echo "Testing uninstallation for env $1"
-
    bes uninstall -env $1 -V $2
 
    if [ xx"$?" == xx"0" ];then
@@ -28,8 +26,7 @@ function test_uninstall {
 
 function test_validate {
    echo "Validate installation of env $1"
-
-   bes validate -env $1 -V $2
+   bes validate -env $1
 
    if [ xx"$?" == xx"0" ];then
       echo "Env $1 is validated successfully"
@@ -42,8 +39,7 @@ function test_validate {
 function test_update {
 
    echo "Testing updation for env $1"
-
-   bes update -env $1 -V $2
+   bes update -env $1
 
    if [ xx"$?" == xx"0" ];then
       echo "Env $1 is updated successfully"
@@ -56,7 +52,7 @@ function test_update {
 function test_reset {
    echo "Testing Reset for env $1"
 
-   bes reset -env $1 -V $2
+   bes reset -env $1
 
    if [ xx"$?" == xx"0" ];then
       echo "Env $1 is reset successfully"
@@ -76,7 +72,8 @@ fi
 envName=$1
 envVer=$2
 
-for command in $operations;
+for commandName in ${operations[@]};
 do
-  test_$command $envName $envVer
+  echo "calling $commandName"	
+  test_$commandName $envName $envVer
 done

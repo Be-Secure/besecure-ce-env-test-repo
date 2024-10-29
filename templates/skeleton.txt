@@ -76,7 +76,7 @@ fi
 envName=$1
 envVer=$2
 
-for command in $operations;
+for commandName in ${operations[@]};
 do
-  test_$command $envName $envVer
+  test_$commandName $envName $envVer
 done
